@@ -1,8 +1,8 @@
 CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o: \
- /home/shivam/Computer_Vision/src/ImageRegistration.cpp \
+ /home/shivam/Computer_Vision/SFM/src/ImageRegistration.cpp \
  /usr/include/stdc-predef.h \
- /home/shivam/Computer_Vision/include/ImageRegistration.h \
- /home/shivam/Computer_Vision/include/CameraParameters.h \
+ /home/shivam/Computer_Vision/SFM/include/ImageRegistration.h \
+ /home/shivam/Computer_Vision/SFM/include/CameraParameters.h \
  /usr/include/c++/10/string \
  /usr/include/x86_64-linux-gnu/c++/10/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/10/bits/os_defines.h \
@@ -139,8 +139,8 @@ CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o: \
  /usr/include/c++/10/bits/stl_vector.h \
  /usr/include/c++/10/bits/stl_bvector.h \
  /usr/include/c++/10/bits/vector.tcc \
- /home/shivam/Computer_Vision/include/SceneGraph.h \
- /home/shivam/Computer_Vision/include/ImageLoader.h \
+ /home/shivam/Computer_Vision/SFM/include/SceneGraph.h \
+ /home/shivam/Computer_Vision/SFM/include/ImageLoader.h \
  /usr/local/include/opencv4/opencv2/core/mat.hpp \
  /usr/local/include/opencv4/opencv2/core/matx.hpp \
  /usr/local/include/opencv4/opencv2/core/cvdef.h \

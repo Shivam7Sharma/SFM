@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug with CMake",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/SFMProject", // Adjust with actual path to the executable
+            "args": [], // Command-line arguments
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "CMake Build", // Match the label of the build task
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ]
+}

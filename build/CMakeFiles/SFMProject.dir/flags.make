@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/shivam/Computer_Vision/include -isystem /usr/local/include/opencv4
+CXX_INCLUDES = -I/usr/include/eigen3 -I/home/shivam/Computer_Vision/SFM/include -isystem /usr/local/include/opencv4
 
 CXX_FLAGS = -std=gnu++17
 

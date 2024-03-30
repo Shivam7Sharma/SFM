@@ -1,7 +1,7 @@
 CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o: \
- /home/shivam/Computer_Vision/src/ImageLoader.cpp \
+ /home/shivam/Computer_Vision/SFM/src/ImageLoader.cpp \
  /usr/include/stdc-predef.h \
- /home/shivam/Computer_Vision/include/ImageLoader.h \
+ /home/shivam/Computer_Vision/SFM/include/ImageLoader.h \
  /usr/local/include/opencv4/opencv2/core/mat.hpp \
  /usr/local/include/opencv4/opencv2/core/matx.hpp \
  /usr/local/include/opencv4/opencv2/core/cvdef.h \

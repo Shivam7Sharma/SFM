@@ -7,12 +7,12 @@
 
 int main() {
   // Example usage
-  std::string paramsFile = "/home/shivam/Computer_Vision/3d_reconstruction/"
+  std::string paramsFile = "/home/shivam/Computer_Vision/SFM/3d_reconstruction/"
                            "delivery_area_rig_undistorted/delivery_area/"
                            "rig_calibration_undistorted/cameras.txt";
   auto cameraParams = loadCameraParameters(paramsFile);
 
-  std::string folderPath = "/home/shivam/Computer_Vision/3d_reconstruction/"
+  std::string folderPath = "/home/shivam/Computer_Vision/SFM/3d_reconstruction/"
                            "delivery_area_rig_undistorted/delivery_area/images";
   std::vector<ImageWithID> images = loadImagesFromFolder(folderPath);
 

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/shivam/Computer_Vision
+CMAKE_SOURCE_DIR = /home/shivam/Computer_Vision/SFM
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/shivam/Computer_Vision/build
+CMAKE_BINARY_DIR = /home/shivam/Computer_Vision/SFM/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/SFMProject.dir/depend.make
@@ -72,86 +72,86 @@ include CMakeFiles/SFMProject.dir/flags.make
 CMakeFiles/SFMProject.dir/src/main.cpp.o: CMakeFiles/SFMProject.dir/flags.make
 CMakeFiles/SFMProject.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/SFMProject.dir/src/main.cpp.o: CMakeFiles/SFMProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SFMProject.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/main.cpp.o -MF CMakeFiles/SFMProject.dir/src/main.cpp.o.d -o CMakeFiles/SFMProject.dir/src/main.cpp.o -c /home/shivam/Computer_Vision/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/SFM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/SFMProject.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/main.cpp.o -MF CMakeFiles/SFMProject.dir/src/main.cpp.o.d -o CMakeFiles/SFMProject.dir/src/main.cpp.o -c /home/shivam/Computer_Vision/SFM/src/main.cpp
 
 CMakeFiles/SFMProject.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SFMProject.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/src/main.cpp > CMakeFiles/SFMProject.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/SFM/src/main.cpp > CMakeFiles/SFMProject.dir/src/main.cpp.i
 
 CMakeFiles/SFMProject.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SFMProject.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/src/main.cpp -o CMakeFiles/SFMProject.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/SFM/src/main.cpp -o CMakeFiles/SFMProject.dir/src/main.cpp.s
 
 CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o: CMakeFiles/SFMProject.dir/flags.make
 CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o: ../src/CameraParameters.cpp
 CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o: CMakeFiles/SFMProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o -MF CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o.d -o CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o -c /home/shivam/Computer_Vision/src/CameraParameters.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/SFM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o -MF CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o.d -o CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o -c /home/shivam/Computer_Vision/SFM/src/CameraParameters.cpp
 
 CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/src/CameraParameters.cpp > CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/SFM/src/CameraParameters.cpp > CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.i
 
 CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/src/CameraParameters.cpp -o CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/SFM/src/CameraParameters.cpp -o CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.s
 
 CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o: CMakeFiles/SFMProject.dir/flags.make
 CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o: ../src/ImageLoader.cpp
 CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o: CMakeFiles/SFMProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o -MF CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o.d -o CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o -c /home/shivam/Computer_Vision/src/ImageLoader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/SFM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o -MF CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o.d -o CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.o -c /home/shivam/Computer_Vision/SFM/src/ImageLoader.cpp
 
 CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/src/ImageLoader.cpp > CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/SFM/src/ImageLoader.cpp > CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.i
 
 CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/src/ImageLoader.cpp -o CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/SFM/src/ImageLoader.cpp -o CMakeFiles/SFMProject.dir/src/ImageLoader.cpp.s
 
 CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.o: CMakeFiles/SFMProject.dir/flags.make
 CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.o: ../src/FeatureMatcher.cpp
 CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.o: CMakeFiles/SFMProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.o -MF CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.o.d -o CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.o -c /home/shivam/Computer_Vision/src/FeatureMatcher.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/SFM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.o -MF CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.o.d -o CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.o -c /home/shivam/Computer_Vision/SFM/src/FeatureMatcher.cpp
 
 CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/src/FeatureMatcher.cpp > CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/SFM/src/FeatureMatcher.cpp > CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.i
 
 CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/src/FeatureMatcher.cpp -o CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/SFM/src/FeatureMatcher.cpp -o CMakeFiles/SFMProject.dir/src/FeatureMatcher.cpp.s
 
 CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o: CMakeFiles/SFMProject.dir/flags.make
 CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o: ../src/ImageRegistration.cpp
 CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o: CMakeFiles/SFMProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o -MF CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o.d -o CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o -c /home/shivam/Computer_Vision/src/ImageRegistration.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/SFM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o -MF CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o.d -o CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.o -c /home/shivam/Computer_Vision/SFM/src/ImageRegistration.cpp
 
 CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/src/ImageRegistration.cpp > CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/SFM/src/ImageRegistration.cpp > CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.i
 
 CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/src/ImageRegistration.cpp -o CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/SFM/src/ImageRegistration.cpp -o CMakeFiles/SFMProject.dir/src/ImageRegistration.cpp.s
 
 CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.o: CMakeFiles/SFMProject.dir/flags.make
 CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.o: ../src/SfMInitializer.cpp
 CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.o: CMakeFiles/SFMProject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.o -MF CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.o.d -o CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.o -c /home/shivam/Computer_Vision/src/SfMInitializer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/shivam/Computer_Vision/SFM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.o -MF CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.o.d -o CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.o -c /home/shivam/Computer_Vision/SFM/src/SfMInitializer.cpp
 
 CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/src/SfMInitializer.cpp > CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/shivam/Computer_Vision/SFM/src/SfMInitializer.cpp > CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.i
 
 CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/src/SfMInitializer.cpp -o CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/shivam/Computer_Vision/SFM/src/SfMInitializer.cpp -o CMakeFiles/SFMProject.dir/src/SfMInitializer.cpp.s
 
 # Object files for target SFMProject
 SFMProject_OBJECTS = \
@@ -213,6 +213,18 @@ SFMProject: /usr/local/lib/libopencv_wechat_qrcode.so.4.9.0
 SFMProject: /usr/local/lib/libopencv_xfeatures2d.so.4.9.0
 SFMProject: /usr/local/lib/libopencv_xobjdetect.so.4.9.0
 SFMProject: /usr/local/lib/libopencv_xphoto.so.4.9.0
+SFMProject: /usr/local/lib/libg2o_core.so
+SFMProject: /usr/local/lib/libg2o_stuff.so
+SFMProject: /usr/local/lib/libg2o_solver_csparse.so
+SFMProject: /usr/local/lib/libg2o_csparse_extension.so
+SFMProject: /usr/local/lib/libg2o_types_sba.so
+SFMProject: /usr/local/lib/libg2o_types_slam3d.so
+SFMProject: /usr/local/lib/libg2o_types_data.so
+SFMProject: /usr/local/lib/libg2o_types_icp.so
+SFMProject: /usr/local/lib/libg2o_types_sba.so
+SFMProject: /usr/local/lib/libg2o_types_sim3.so
+SFMProject: /usr/local/lib/libg2o_types_slam2d.so
+SFMProject: /usr/local/lib/libg2o_types_slam3d.so
 SFMProject: /usr/local/lib/libopencv_shape.so.4.9.0
 SFMProject: /usr/local/lib/libopencv_highgui.so.4.9.0
 SFMProject: /usr/local/lib/libopencv_datasets.so.4.9.0
@@ -241,8 +253,13 @@ SFMProject: /usr/local/lib/libopencv_imgproc.so.4.9.0
 SFMProject: /usr/local/lib/libopencv_cudaarithm.so.4.9.0
 SFMProject: /usr/local/lib/libopencv_core.so.4.9.0
 SFMProject: /usr/local/lib/libopencv_cudev.so.4.9.0
+SFMProject: /usr/local/lib/libg2o_types_sba.so
+SFMProject: /usr/local/lib/libg2o_types_data.so
+SFMProject: /usr/local/lib/libg2o_types_icp.so
+SFMProject: /usr/local/lib/libg2o_types_sim3.so
+SFMProject: /usr/local/lib/libg2o_types_slam2d.so
 SFMProject: CMakeFiles/SFMProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/shivam/Computer_Vision/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable SFMProject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/shivam/Computer_Vision/SFM/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable SFMProject"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SFMProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -254,6 +271,6 @@ CMakeFiles/SFMProject.dir/clean:
 .PHONY : CMakeFiles/SFMProject.dir/clean
 
 CMakeFiles/SFMProject.dir/depend:
-	cd /home/shivam/Computer_Vision/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shivam/Computer_Vision /home/shivam/Computer_Vision /home/shivam/Computer_Vision/build /home/shivam/Computer_Vision/build /home/shivam/Computer_Vision/build/CMakeFiles/SFMProject.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/shivam/Computer_Vision/SFM/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/shivam/Computer_Vision/SFM /home/shivam/Computer_Vision/SFM /home/shivam/Computer_Vision/SFM/build /home/shivam/Computer_Vision/SFM/build /home/shivam/Computer_Vision/SFM/build/CMakeFiles/SFMProject.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/SFMProject.dir/depend
 

@@ -1,7 +1,7 @@
 CMakeFiles/SFMProject.dir/src/CameraParameters.cpp.o: \
- /home/shivam/Computer_Vision/src/CameraParameters.cpp \
+ /home/shivam/Computer_Vision/SFM/src/CameraParameters.cpp \
  /usr/include/stdc-predef.h \
- /home/shivam/Computer_Vision/include/CameraParameters.h \
+ /home/shivam/Computer_Vision/SFM/include/CameraParameters.h \
  /usr/include/c++/10/string \
  /usr/include/x86_64-linux-gnu/c++/10/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/10/bits/os_defines.h \

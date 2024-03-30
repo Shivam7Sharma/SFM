@@ -1,6 +1,6 @@
 CMakeFiles/SFMProject.dir/src/main.cpp.o: \
- /home/shivam/Computer_Vision/src/main.cpp /usr/include/stdc-predef.h \
- /home/shivam/Computer_Vision/include/CameraParameters.h \
+ /home/shivam/Computer_Vision/SFM/src/main.cpp /usr/include/stdc-predef.h \
+ /home/shivam/Computer_Vision/SFM/include/CameraParameters.h \
  /usr/include/c++/10/string \
  /usr/include/x86_64-linux-gnu/c++/10/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/10/bits/os_defines.h \
@@ -137,8 +137,8 @@ CMakeFiles/SFMProject.dir/src/main.cpp.o: \
  /usr/include/c++/10/bits/stl_vector.h \
  /usr/include/c++/10/bits/stl_bvector.h \
  /usr/include/c++/10/bits/vector.tcc \
- /home/shivam/Computer_Vision/include/FeatureMatcher.h \
- /home/shivam/Computer_Vision/include/ImageLoader.h \
+ /home/shivam/Computer_Vision/SFM/include/FeatureMatcher.h \
+ /home/shivam/Computer_Vision/SFM/include/ImageLoader.h \
  /usr/local/include/opencv4/opencv2/core/mat.hpp \
  /usr/local/include/opencv4/opencv2/core/matx.hpp \
  /usr/local/include/opencv4/opencv2/core/cvdef.h \
@@ -234,7 +234,7 @@ CMakeFiles/SFMProject.dir/src/main.cpp.o: \
  /usr/lib/gcc/x86_64-linux-gnu/10/include/float.h \
  /usr/local/include/opencv4/opencv2/core/bufferpool.hpp \
  /usr/local/include/opencv4/opencv2/core/mat.inl.hpp \
- /home/shivam/Computer_Vision/include/SceneGraph.h \
+ /home/shivam/Computer_Vision/SFM/include/SceneGraph.h \
  /usr/local/include/opencv4/opencv2/core.hpp \
  /usr/local/include/opencv4/opencv2/core/persistence.hpp \
  /usr/local/include/opencv4/opencv2/core/operations.hpp \
@@ -272,6 +272,6 @@ CMakeFiles/SFMProject.dir/src/main.cpp.o: \
  /usr/local/include/opencv4/opencv2/flann/miniflann.hpp \
  /usr/local/include/opencv4/opencv2/flann/defines.h \
  /usr/local/include/opencv4/opencv2/flann/config.h \
- /home/shivam/Computer_Vision/include/ImageRegistration.h \
- /home/shivam/Computer_Vision/include/SfMInitializer.h \
+ /home/shivam/Computer_Vision/SFM/include/ImageRegistration.h \
+ /home/shivam/Computer_Vision/SFM/include/SfMInitializer.h \
  /usr/include/c++/10/iostream
