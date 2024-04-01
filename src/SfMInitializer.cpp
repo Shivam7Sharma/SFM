@@ -143,7 +143,7 @@ void SfMInitializer::initializeReconstruction(
 
   g2o::SparseOptimizer optimizer;
   std::cout << "SparseOptimizer created.\n";
-
+  optimizer.setVerbose(true);
   // Create the linear solver
   auto linearSolver = std::make_unique<g2o::LinearSolverDense<
       g2o::BlockSolver<g2o::BlockSolverTraits<6, 3>>::PoseMatrixType>>();
@@ -160,19 +160,66 @@ void SfMInitializer::initializeReconstruction(
       new g2o::OptimizationAlgorithmLevenberg(std::move(blockSolver)));
   std::cout << "Optimization algorithm set.\n";
 
+  // Create a new g2o::CameraParameters object
+  g2o::CameraParameters *cam_params = new g2o::CameraParameters(
+      params1->fx, Eigen::Vector2d(params1->cx, params1->cy), 0.);
+
+  // Set the id from your CameraParameters struct
+  cam_params->setId(params1->camera_id);
+  std::cout << "params1 fx, cx, cy, and id : " << params1->fx << " "
+            << params1->cx << " " << params1->cy << " " << params1->camera_id
+            << std::endl;
+
+  std::cout << "Camera focal length " << cam_params->focal_length
+            << "\n Camera Principle Point " << cam_params->principle_point
+            << std::endl;
+  // Add the camera parameters to the optimizer
+  if (!optimizer.addParameter(cam_params)) {
+    assert(false);
+  }
+  if (params2->camera_id != params1->camera_id) {
+    std::cerr << "Camera IDs are different.\n";
+
+    // Create a new g2o::CameraParameters object for the second camera
+    g2o::CameraParameters *cam_params2 = new g2o::CameraParameters(
+        params2->fx, Eigen::Vector2d(params2->cx, params2->cy), 0.);
+
+    std::cout << "params2 fx, cx, cy, and id : " << params2->fx << " "
+              << params2->cx << " " << params2->cy << " " << params2->camera_id
+              << std::endl;
+
+    // Set the id from your CameraParameters struct
+    cam_params2->setId(params2->camera_id);
+
+    // Add the camera parameters to the optimizer
+    if (!optimizer.addParameter(cam_params2)) {
+      assert(false);
+    }
+  } else {
+    std::cout << "Camera IDs are the same.\n";
+  }
+
   // Convert from cv::Mat to Eigen::Matrix, check for validity of conversion
   Eigen::Matrix3d R_eigen;
   cv::cv2eigen(R, R_eigen);
   Eigen::Vector3d t_eigen;
   cv::cv2eigen(t, t_eigen);
   std::cout << "Converted R and t from cv::Mat to Eigen.\n";
+  g2o::SE3Quat pose2 = g2o::SE3Quat(R_eigen, t_eigen);
 
-  auto *vertex = new g2o::VertexSE3Expmap();
-  vertex->setId(0); // Set the ID to 0 for the first camera pose
-  vertex->setEstimate(
-      g2o::SE3Quat(R_eigen, t_eigen)); // Set the initial estimate for the pose
-  optimizer.addVertex(vertex);
+  g2o::SE3Quat pose1 = (pose2).inverse();
+  std::cout << "Inverse pose computed.\n";
+
+  auto *vertex0 = new g2o::VertexSE3Expmap();
+  vertex0->setId(0);           // Set the ID to 0 for the first camera pose
+  vertex0->setEstimate(pose1); // Set the initial estimate for the pose
+  optimizer.addVertex(vertex0);
   std::cout << "Added first camera pose as vertex.\n";
+  auto *vertex1 = new g2o::VertexSE3Expmap();
+  vertex1->setId(1);           // Set the ID to 0 for the first camera pose
+  vertex1->setEstimate(pose2); // Set the initial estimate for the pose
+  optimizer.addVertex(vertex1);
+  std::cout << "Added second camera pose as vertex.\n";
   // Add nodes and edges to the optimizer here
 
   // points3D now contains the triangulated 3D points
@@ -182,9 +229,10 @@ void SfMInitializer::initializeReconstruction(
   // Assuming points is a std::vector<cv::Point3f> containing your 3D points
 
   // Check for segmentation fault around adding vertices for 3D points
+  int edgeId = 0;
   for (int i = 0; i < points3D.rows; ++i) {
     auto *pointVertex = new g2o::VertexPointXYZ();
-    pointVertex->setId(i + 1);
+    pointVertex->setId(i + 2);
     // Ensure the point data is valid before setting it
     Eigen::Vector3d point =
         Eigen::Vector3d(points3D.at<double>(i, 0), points3D.at<double>(i, 1),
@@ -198,125 +246,134 @@ void SfMInitializer::initializeReconstruction(
     } else {
       std::cout << "Invalid 3D point encountered at index: " << i << "\n";
     }
+    // Similar checks for edges
+    for (auto pose : {0, 1}) {
+      // const auto &match = sceneGraph.edges[bestEdgeIndex].matches[i];
+      auto *edge = new g2o::EdgeProjectXYZ2UV();
+      std::cout << "Attempting to create edge for match index: " << i
+                << std::endl;
+
+      // Ensure the keypoints indices are within bounds
+      // if (match.queryIdx >= allKeypoints[bestPair[0]].size() ||
+      // match.trainIdx >= allKeypoints[bestPair[1]].size()) {
+      // std::cerr << "KeyPoint index out of bounds for match index: " << i
+      // << std::endl;
+      // continue; // Skip this match
+      // }
+      // std::cout << "Match Query Index: " << match.queryIdx << std::endl;
+      // // Ensure vertices exist for the given indices
+      g2o::OptimizableGraph::Vertex *vertex0 =
+          dynamic_cast<g2o::OptimizableGraph::Vertex *>(
+              optimizer.vertex(i + 2));
+      std::cout << "passed vertex0\n";
+      g2o::OptimizableGraph::Vertex *vertex1 =
+          dynamic_cast<g2o::OptimizableGraph::Vertex *>(optimizer.vertex(pose));
+      std::cout << "passed pose vertex\n";
+      if (!vertex0 || !vertex1) {
+        std::cerr << "Vertex missing for match index: " << i << std::endl;
+        continue; // Skip this match
+      }
+
+      if (vertex0 == nullptr) {
+        std::cout << "Vertex 0 is nullptr.\n";
+      } else if (vertex1 == nullptr) {
+        std::cout << "Vertex 1 is nullptr.\n";
+      }
+      std::cout << "Vertices found for match index: " << i + 2 << std::endl;
+      // Set vertices for the edge
+      edge->setVertex(0, vertex0);
+      std::cout << "Set vertex 0\n";
+      edge->setVertex(1, vertex1);
+      std::cout << "Set vertex 1\n";
+      edge->setId(edgeId); // Set the ID of the edge
+
+      // Set measurement and information
+      if (pose == 0) {
+        edge->setMeasurement(
+            Eigen::Vector2d(points1[i].x, points1[i].y)); // Use the first image
+        edge->setParameterId(0, params1->camera_id);
+      } else {
+        edge->setMeasurement(Eigen::Vector2d(
+            points2[i].x, points2[i].y)); // Use the second image
+        edge->setParameterId(0, params2->camera_id);
+      }
+      std::cout << "Set measurement\n";
+      edge->setInformation(Eigen::Matrix2d::Identity());
+      std::cout << "Set information\n";
+
+      if (edge == nullptr) {
+        std::cout << "Edge is nullptr.\n";
+      } else if (optimizer.vertex(edge->vertices()[0]->id()) == nullptr ||
+                 optimizer.vertex(edge->vertices()[1]->id()) == nullptr) {
+        std::cout << "One or both vertices do not exist in the optimizer.\n";
+      }
+
+      if (optimizer.solver() == nullptr) {
+        std::cout << "No solver set for the optimizer.\n";
+      } else {
+        std::cout << "Solver set for the optimizer.\n";
+      }
+
+      std::cout << "Number of vertices in the optimizer: "
+                << optimizer.vertices().size() << "\n";
+      std::cout << "Number of edges in the optimizer: "
+                << optimizer.edges().size() << "\n";
+
+      if (edge->vertices()[0] != nullptr && edge->vertices()[1] != nullptr) {
+        // Check if they exist within the optimizer
+        if (optimizer.vertex(edge->vertices()[0]->id()) != nullptr &&
+            optimizer.vertex(edge->vertices()[1]->id()) != nullptr) {
+          std::cout << "Both vertices exist within the optimizer.\n";
+        } else {
+          std::cout
+              << "One or both vertices do not exist within the optimizer.\n";
+        }
+      } else {
+        std::cout << "One or both vertices are null.\n";
+      }
+
+      // std::cout << optimizer << std::endl;
+      // Attempt to add edge to optimizer
+      if (!optimizer.addEdge(edge)) {
+        std::cerr << "Failed to add edge to optimizer for match index: " << i
+                  << std::endl;
+        delete edge; // Cleanup if adding edge failed
+      } else {
+        std::cout << "Successfully added edge for match index: " << i
+                  << std::endl;
+      }
+      std::cout << "Finished processing match index: " << i << std::endl;
+    }
   }
   std::cout << "Added all 3D points as vertices.\n";
 
-  // Similar checks for edges
-  for (int i = 0; i < points3D.rows; ++i) {
-    // const auto &match = sceneGraph.edges[bestEdgeIndex].matches[i];
-    auto *edge = new g2o::EdgeProjectXYZ2UV();
-    std::cout << "Attempting to create edge for match index: " << i
-              << std::endl;
-
-    // Ensure the keypoints indices are within bounds
-    // if (match.queryIdx >= allKeypoints[bestPair[0]].size() ||
-    // match.trainIdx >= allKeypoints[bestPair[1]].size()) {
-    // std::cerr << "KeyPoint index out of bounds for match index: " << i
-    // << std::endl;
-    // continue; // Skip this match
-    // }
-    // std::cout << "Match Query Index: " << match.queryIdx << std::endl;
-    // // Ensure vertices exist for the given indices
-    g2o::OptimizableGraph::Vertex *vertex0 =
-        dynamic_cast<g2o::OptimizableGraph::Vertex *>(optimizer.vertex(i + 1));
-    std::cout << "passed vertex0\n";
-    g2o::OptimizableGraph::Vertex *vertex1 =
-        dynamic_cast<g2o::OptimizableGraph::Vertex *>(optimizer.vertex(0));
-    std::cout << "passed vertex1\n";
-    if (!vertex0 || !vertex1) {
-      std::cerr << "Vertex missing for match index: " << i << std::endl;
-      continue; // Skip this match
-    }
-
-    if (vertex0 == nullptr) {
-      std::cout << "Vertex 0 is nullptr.\n";
-    } else if (vertex1 == nullptr) {
-      std::cout << "Vertex 1 is nullptr.\n";
-    }
-    std::cout << "Vertices found for match index: " << i << std::endl;
-    // Set vertices for the edge
-    edge->setVertex(0, vertex0);
-    std::cout << "Set vertex 0\n";
-    edge->setVertex(1, vertex1);
-    std::cout << "Set vertex 1\n";
-    edge->setId(i); // Set the ID of the edge
-
-    // Set measurement and information
-    edge->setMeasurement(
-        Eigen::Vector2d(points1[i].x, points1[i].y)); // Use the first image
-    std::cout << "Set measurement\n";
-    edge->setInformation(Eigen::Matrix2d::Identity());
-    std::cout << "Set information\n";
-
-    if (edge == nullptr) {
-      std::cout << "Edge is nullptr.\n";
-    } else if (optimizer.vertex(edge->vertices()[0]->id()) == nullptr ||
-               optimizer.vertex(edge->vertices()[1]->id()) == nullptr) {
-      std::cout << "One or both vertices do not exist in the optimizer.\n";
-    }
-
-    if (optimizer.solver() == nullptr) {
-      std::cout << "No solver set for the optimizer.\n";
-    } else {
-      std::cout << "Solver set for the optimizer.\n";
-    }
-
-    std::cout << "Number of vertices in the optimizer: "
-              << optimizer.vertices().size() << "\n";
-    std::cout << "Number of edges in the optimizer: "
-              << optimizer.edges().size() << "\n";
-
-    if (edge->vertices()[0] != nullptr && edge->vertices()[1] != nullptr) {
-      // Check if they exist within the optimizer
-      if (optimizer.vertex(edge->vertices()[0]->id()) != nullptr &&
-          optimizer.vertex(edge->vertices()[1]->id()) != nullptr) {
-        std::cout << "Both vertices exist within the optimizer.\n";
-      } else {
-        std::cout
-            << "One or both vertices do not exist within the optimizer.\n";
-      }
-    } else {
-      std::cout << "One or both vertices are null.\n";
-    }
-
-    // std::cout << optimizer << std::endl;
-    // Attempt to add edge to optimizer
-    if (!optimizer.addEdge(edge)) {
-      std::cerr << "Failed to add edge to optimizer for match index: " << i
-                << std::endl;
-      delete edge; // Cleanup if adding edge failed
-    } else {
-      std::cout << "Successfully added edge for match index: " << i
-                << std::endl;
-    }
-    std::cout << "Finished processing match index: " << i << std::endl;
-  }
-
   optimizer.initializeOptimization();
   optimizer.optimize(10); // The number of iterations can be adjusted as needed
-
+  std::cout << "Optimization complete.\n";
   // Create a new cv::Mat to store the optimized 3D points
   cv::Mat optimizedPoints3D(points3D.rows, points3D.cols, points3D.type());
-
+  std::cout << "Created optimizedPoints3D.\n";
   // Retrieve the optimized 3D points from the optimizer
   for (int i = 0; i < points3D.rows; ++i) {
     g2o::VertexPointXYZ *v =
-        static_cast<g2o::VertexPointXYZ *>(optimizer.vertex(i + 1));
+        static_cast<g2o::VertexPointXYZ *>(optimizer.vertex(i + 2));
     Eigen::Vector3d point = v->estimate();
     optimizedPoints3D.at<cv::Vec3d>(i, 0) =
         cv::Vec3d(point[0], point[1], point[2]);
   }
+  std::cout << "Retrieved optimized 3D points.\n";
 
   // Retrieve the optimized camera pose from the optimizer
   g2o::VertexSE3Expmap *v =
       static_cast<g2o::VertexSE3Expmap *>(optimizer.vertex(0));
   g2o::SE3Quat pose = v->estimate();
-
+  std::cout << "Retrieved optimized camera pose.\n";
   // Convert the pose to rotation matrix and translation vector
 
   cv::Mat R_cv, t_cv;
   cv::eigen2cv(pose.rotation().toRotationMatrix(), R_cv);
   cv::eigen2cv(pose.translation(), t_cv);
+  std::cout << "Converted optimized pose to cv::Mat.\n";
   // Check if OpenCV Viz module is available and points3D is not empty
   // Check if OpenCV Viz module is available and points3D is not empty
   // Initialize the Viz window
@@ -330,6 +387,8 @@ void SfMInitializer::initializeReconstruction(
     std::vector<cv::Vec3f> pointCloud;
     for (int i = 0; i < optimizedPoints3D.rows; i++) {
       // Extract each point and push it into the pointCloud vector
+      std::cout << "Optimized 3D point: "
+                << optimizedPoints3D.at<cv::Vec3d>(i, 0) << std::endl;
       cv::Point3f pt = optimizedPoints3D.at<cv::Vec3f>(i, 0);
       pointCloud.push_back(pt);
     }

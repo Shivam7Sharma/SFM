@@ -7,7 +7,7 @@
                 "/usr/local/include/opencv4/",
                 "/usr/local/cuda-12.3/include/",
                 "/usr/local/include/g2o",
-                "/usr/include/eigen3",
+                "/usr/include/eigen3"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",
