@@ -1,4 +1,4 @@
-# Structure from Motion (SfM) Initializer
+# Structure from Motion (SfM) (In development)
 
 This project contains the implementation of a Structure from Motion (SfM) initializer. The SfM initializer takes a set of images, detects features in these images, matches these features across images, and then uses these matches to estimate the 3D structure of the scene and the camera poses.
 
